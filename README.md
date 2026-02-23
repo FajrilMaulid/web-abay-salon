@@ -30,8 +30,8 @@ Pastikan perangkat kamu sudah memiliki:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/<username>/web-booking-salon.git
-cd web-booking-salon
+git clone https://github.com/FajrilMaulid/web-abay-salon.git
+cd web-abay-salon
 ```
 
 ### 2. Install Dependensi PHP
