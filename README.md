@@ -1,59 +1,219 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
 </p>
 
-## About Laravel
+<h1 align="center">💇 Web Booking Salon</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Aplikasi web booking salon berbasis Laravel — memudahkan pelanggan membuat janji dan admin mengelola jadwal layanan.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Persyaratan Sistem
 
-## Learning Laravel
+Pastikan perangkat kamu sudah memiliki:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+| Kebutuhan | Versi Minimum |
+| --------- | ------------- |
+| PHP       | ≥ 8.2         |
+| Composer  | ≥ 2.x         |
+| Node.js   | ≥ 18.x        |
+| npm       | ≥ 9.x         |
+| MySQL     | ≥ 8.0         |
+| Git       | Latest        |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🚀 Panduan Instalasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone Repository
 
-### Premium Partners
+```bash
+git clone https://github.com/<username>/web-booking-salon.git
+cd web-booking-salon
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Install Dependensi PHP
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Install Dependensi JavaScript
 
-## Code of Conduct
+```bash
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Konfigurasi Environment
 
-## Security Vulnerabilities
+Salin file `.env.example` menjadi `.env`:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
 
-## License
+> **Windows (Command Prompt / PowerShell):**
+>
+> ```powershell
+> copy .env.example .env
+> ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Kemudian buka file `.env` dan sesuaikan konfigurasi berikut:
+
+```env
+APP_NAME="Web Booking Salon"
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=web_booking_salon   # Nama database yang sudah dibuat
+DB_USERNAME=root                # Username MySQL kamu
+DB_PASSWORD=                    # Password MySQL kamu (kosongkan jika tidak ada)
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Buat Database
+
+Buat database baru di MySQL dengan nama yang sesuai dengan `DB_DATABASE` di `.env`:
+
+```sql
+CREATE DATABASE web_booking_salon;
+```
+
+Atau bisa menggunakan **phpMyAdmin** / **TablePlus** / **DBeaver**.
+
+### 7. Jalankan Migrasi & Seeder
+
+```bash
+php artisan migrate --seed
+```
+
+> Jika ingin mereset dan mengisi ulang data:
+>
+> ```bash
+> php artisan migrate:fresh --seed
+> ```
+
+### 8. Build Asset Frontend
+
+```bash
+npm run build
+```
+
+> Untuk mode development dengan hot-reload:
+>
+> ```bash
+> npm run dev
+> ```
+
+### 9. Jalankan Server
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di: **http://localhost:8000**
+
+---
+
+## ⚙️ Konfigurasi Tambahan (Opsional)
+
+### Konfigurasi Email
+
+Untuk mengaktifkan fitur notifikasi email, ubah konfigurasi `MAIL_*` di `.env`:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=emailkamu@gmail.com
+MAIL_PASSWORD=app_password_kamu
+MAIL_FROM_ADDRESS=emailkamu@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+### Storage Link
+
+Jika aplikasi menggunakan penyimpanan file lokal (gambar profil, dll):
+
+```bash
+php artisan storage:link
+```
+
+---
+
+## 🗂️ Struktur Peran (Default Seeder)
+
+Setelah menjalankan seeder, akun default yang tersedia:
+
+| Peran | Email           | Password |
+| ----- | --------------- | -------- |
+| Admin | admin@salon.com | password |
+
+> ⚠️ **Segera ganti password default setelah login pertama!**
+
+---
+
+## 🛠️ Perintah Berguna
+
+```bash
+# Menjalankan server development
+php artisan serve
+
+# Build asset untuk production
+npm run build
+
+# Menjalankan migrasi ulang + seeder
+php artisan migrate:fresh --seed
+
+# Membersihkan cache
+php artisan optimize:clear
+
+# Melihat daftar route
+php artisan route:list
+```
+
+---
+
+## 🐛 Troubleshooting
+
+**Error: `APP_KEY` tidak ditemukan**
+
+```bash
+php artisan key:generate
+```
+
+**Error: Koneksi database gagal**
+
+- Pastikan MySQL sudah berjalan
+- Periksa kembali `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` di `.env`
+- Pastikan database sudah dibuat
+
+**Error: Permission denied pada `storage/` atau `bootstrap/cache/`**
+
+```bash
+# Linux / macOS
+chmod -R 775 storage bootstrap/cache
+
+# Windows: pastikan folder tidak dalam mode read-only
+```
+
+**Error: Vite manifest tidak ditemukan**
+
+```bash
+npm run build
+```
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
